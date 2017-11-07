@@ -35,6 +35,8 @@
 
 #import <objc/runtime.h>
 
+#import "JSQMessages-Swift.h"
+
 
 // Fixes rdar://26295020
 // See issue #1247 and Peter Steinberger's comment:
@@ -112,6 +114,7 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 @property (weak, nonatomic) IBOutlet JSQMessagesCollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet JSQMessagesInputToolbar *inputToolbar;
+@property (strong, nonatomic) SafeAreaInputAccessoryViewWrapperView *safeAreaInputAccessoryView;
 
 @property (nonatomic) NSLayoutConstraint *toolbarHeightConstraint;
 
@@ -154,11 +157,13 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
 
+    self.safeAreaInputAccessoryView = [[SafeAreaInputAccessoryViewWrapperView alloc] initFor:self.inputToolbar];
+
     self.inputToolbar.delegate = self;
     self.inputToolbar.contentView.textView.placeHolder = [NSBundle jsq_localizedStringForKey:@"new_message"];
     self.inputToolbar.contentView.textView.accessibilityLabel = [NSBundle jsq_localizedStringForKey:@"new_message"];
     self.inputToolbar.contentView.textView.delegate = self;
-    [self.inputToolbar removeFromSuperview];
+//    [self.inputToolbar removeFromSuperview];
 
     self.automaticallyScrollsToMostRecentMessage = YES;
 
@@ -771,7 +776,7 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 - (UIView *)inputAccessoryView
 {
-    return self.inputToolbar;
+    return self.safeAreaInputAccessoryView;
 }
 
 - (BOOL)canBecomeFirstResponder
