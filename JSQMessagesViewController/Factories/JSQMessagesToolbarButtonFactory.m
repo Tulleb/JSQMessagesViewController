@@ -49,7 +49,8 @@
 
 - (UIButton *)defaultAccessoryButtonItem
 {
-    UIImage *accessoryImage = [UIImage imageNamed:@"accessoryButtons"];
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    UIImage *accessoryImage = [UIImage imageNamed:@"accessoryButtons" inBundle:bundle compatibleWithTraitCollection:nil];
 
     UIButton *accessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f,
                                                                            0.0f,
@@ -66,7 +67,8 @@
 
 - (UIButton *)defaultSendButtonItem
 {
-    UIImage *sendImage = [UIImage imageNamed:@"sendButton"];
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    UIImage *sendImage = [UIImage imageNamed:@"sendButton" inBundle:bundle compatibleWithTraitCollection:nil];
 
     UIButton *sendButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f,
                                                                       0.0f,
