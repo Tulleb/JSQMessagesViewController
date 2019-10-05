@@ -32,6 +32,7 @@
 
 #import "NSString+JSQMessages.h"
 #import "NSBundle+JSQMessages.h"
+#import "UIColor+JSQMessages.h"
 
 #import <objc/runtime.h>
 
@@ -147,7 +148,7 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 - (void)jsq_configureMessagesViewController
 {
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor jsq_systemBackgroundColor];
 
     self.toolbarHeightConstraint.constant = self.inputToolbar.preferredDefaultHeight;
 

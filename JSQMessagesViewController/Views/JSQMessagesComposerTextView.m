@@ -21,6 +21,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "NSString+JSQMessages.h"
+#import "UIColor+JSQMessages.h"
 
 @interface JSQMessagesComposerTextView ()
 
@@ -40,14 +41,14 @@
 
     CGFloat cornerRadius = 6.0f;
 
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor jsq_secondarySystemBackgroundColor];
     self.layer.borderWidth = 0.5f;
     self.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.layer.cornerRadius = cornerRadius;
+    self.layer.cornerRadius = self.bounds.size.height / 2;
 
     self.scrollIndicatorInsets = UIEdgeInsetsMake(cornerRadius, 0.0f, cornerRadius, 0.0f);
 
-    self.textContainerInset = UIEdgeInsetsMake(4.0f, 2.0f, 4.0f, 2.0f);
+    self.textContainerInset = UIEdgeInsetsMake(4.0f, 8.0f, 4.0f, 8.0f);
     self.contentInset = UIEdgeInsetsMake(1.0f, 0.0f, 1.0f, 0.0f);
 
     self.scrollEnabled = YES;
@@ -55,7 +56,7 @@
     self.userInteractionEnabled = YES;
 
     self.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.textColor = [UIColor blackColor];
+    self.textColor = [UIColor jsq_labelColor];
     self.textAlignment = NSTextAlignmentNatural;
 
     self.contentMode = UIViewContentModeRedraw;
@@ -67,7 +68,7 @@
     self.text = nil;
 
     _placeHolder = nil;
-    _placeHolderTextColor = [UIColor lightGrayColor];
+    _placeHolderTextColor = [UIColor jsq_placeholderTextColor];
 
     [self associateConstraints];
 
@@ -221,7 +222,7 @@
     if ([self.text length] == 0 && self.placeHolder) {
         [self.placeHolderTextColor set];
 
-        [self.placeHolder drawInRect:CGRectInset(rect, 7.0f, 5.0f)
+        [self.placeHolder drawInRect:CGRectInset(rect, 13.0f, 4.0f)
                       withAttributes:[self jsq_placeholderTextAttributes]];
     }
 }

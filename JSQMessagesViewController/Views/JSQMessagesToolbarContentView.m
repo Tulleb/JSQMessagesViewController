@@ -19,6 +19,7 @@
 #import "JSQMessagesToolbarContentView.h"
 
 #import "UIView+JSQMessages.h"
+#import "UIColor+JSQMessages.h"
 
 const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
 
@@ -61,17 +62,11 @@ const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
     self.leftHorizontalSpacingConstraint.constant = kJSQMessagesToolbarContentViewHorizontalSpacingDefault;
     self.rightHorizontalSpacingConstraint.constant = kJSQMessagesToolbarContentViewHorizontalSpacingDefault;
 
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor jsq_systemBackgroundColor];
+    self.rightBarButtonContainerView.backgroundColor = [UIColor clearColor];
 }
 
 #pragma mark - Setters
-
-- (void)setBackgroundColor:(UIColor *)backgroundColor
-{
-    [super setBackgroundColor:backgroundColor];
-    self.leftBarButtonContainerView.backgroundColor = backgroundColor;
-    self.rightBarButtonContainerView.backgroundColor = backgroundColor;
-}
 
 - (void)setLeftBarButtonItem:(UIButton *)leftBarButtonItem
 {

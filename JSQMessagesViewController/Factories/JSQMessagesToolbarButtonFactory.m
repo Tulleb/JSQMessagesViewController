@@ -49,52 +49,35 @@
 
 - (UIButton *)defaultAccessoryButtonItem
 {
-    UIImage *accessoryImage = [UIImage jsq_defaultAccessoryImage];
-    UIImage *normalImage = [accessoryImage jsq_imageMaskedWithColor:[UIColor lightGrayColor]];
-    UIImage *highlightedImage = [accessoryImage jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
+    UIImage *accessoryImage = [UIImage imageNamed:@"accessoryButtons"];
 
-    UIButton *accessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, accessoryImage.size.width, 32.0f)];
-    [accessoryButton setImage:normalImage forState:UIControlStateNormal];
-    [accessoryButton setImage:highlightedImage forState:UIControlStateHighlighted];
+    UIButton *accessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f,
+                                                                           0.0f,
+                                                                           accessoryImage.size.width,
+                                                                           accessoryImage.size.height)];
+    [accessoryButton setImage:accessoryImage forState:UIControlStateNormal];
 
     accessoryButton.contentMode = UIViewContentModeScaleAspectFit;
     accessoryButton.backgroundColor = [UIColor clearColor];
-    accessoryButton.tintColor = [UIColor lightGrayColor];
-    accessoryButton.titleLabel.font = self.buttonFont;
+    accessoryButton.userInteractionEnabled = false;
     
-    accessoryButton.accessibilityLabel = [NSBundle jsq_localizedStringForKey:@"accessory_button_accessibility_label"];
-
     return accessoryButton;
 }
 
 - (UIButton *)defaultSendButtonItem
 {
-    NSString *sendTitle = [NSBundle jsq_localizedStringForKey:@"send"];
+    UIImage *sendImage = [UIImage imageNamed:@"sendButton"];
 
-    UIButton *sendButton = [[UIButton alloc] initWithFrame:CGRectZero];
-    [sendButton setTitle:sendTitle forState:UIControlStateNormal];
-    [sendButton setTitleColor:[UIColor jsq_messageBubbleBlueColor] forState:UIControlStateNormal];
-    [sendButton setTitleColor:[[UIColor jsq_messageBubbleBlueColor] jsq_colorByDarkeningColorWithValue:0.1f] forState:UIControlStateHighlighted];
-    [sendButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    UIButton *sendButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f,
+                                                                      0.0f,
+                                                                      sendImage.size.width,
+                                                                      sendImage.size.height)];
+    [sendButton setImage:sendImage forState:UIControlStateNormal];
 
-    sendButton.titleLabel.font = self.buttonFont;
-    sendButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    sendButton.titleLabel.minimumScaleFactor = 0.85f;
-    sendButton.contentMode = UIViewContentModeCenter;
+    sendButton.layer.cornerRadius = sendImage.size.width / 2;
+    sendButton.clipsToBounds = true;
+    sendButton.contentMode = UIViewContentModeScaleAspectFit;
     sendButton.backgroundColor = [UIColor clearColor];
-    sendButton.tintColor = [UIColor jsq_messageBubbleBlueColor];
-
-    CGFloat maxHeight = 32.0f;
-
-    CGRect sendTitleRect = [sendTitle boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, maxHeight)
-                                                   options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-                                                attributes:@{ NSFontAttributeName : sendButton.titleLabel.font }
-                                                   context:nil];
-
-    sendButton.frame = CGRectMake(0.0f,
-                                  0.0f,
-                                  CGRectGetWidth(CGRectIntegral(sendTitleRect)),
-                                  maxHeight);
 
     return sendButton;
 }

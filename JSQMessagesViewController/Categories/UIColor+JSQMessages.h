@@ -44,6 +44,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (UIColor *)jsq_messageBubbleLightGrayColor;
 
++ (UIColor *)jsq_systemBackgroundColor;
+
++ (UIColor *)jsq_secondarySystemBackgroundColor;
+
++ (UIColor *)jsq_labelColor;
+
++ (UIColor *)jsq_placeholderTextColor;
+
 #pragma mark - Utilities
 
 /**

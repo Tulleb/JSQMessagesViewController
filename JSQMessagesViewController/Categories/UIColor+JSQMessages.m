@@ -87,4 +87,36 @@
     return retColor;
 }
 
++ (UIColor *)jsq_systemBackgroundColor {
+    if (@available(iOS 13.0, *)) {
+        return [UIColor systemBackgroundColor];
+    } else {
+        return [UIColor whiteColor];
+    }
+}
+
++ (UIColor *)jsq_secondarySystemBackgroundColor {
+    if (@available(iOS 13.0, *)) {
+        return [UIColor secondarySystemBackgroundColor];
+    } else {
+        return [UIColor whiteColor];
+    }
+}
+
++ (UIColor *)jsq_labelColor {
+    if (@available(iOS 13.0, *)) {
+        return [UIColor labelColor];
+    } else {
+        return [UIColor blackColor];
+    }
+}
+
++ (UIColor *)jsq_placeholderTextColor {
+    if (@available(iOS 13.0, *)) {
+        return [UIColor placeholderTextColor];
+    } else {
+        return [UIColor lightGrayColor];
+    }
+}
+
 @end

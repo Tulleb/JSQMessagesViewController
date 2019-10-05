@@ -66,6 +66,7 @@ static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesIn
     JSQMessagesToolbarButtonFactory *toolbarButtonFactory = [[JSQMessagesToolbarButtonFactory alloc] initWithFont:[UIFont boldSystemFontOfSize:17.0]];
     self.contentView.leftBarButtonItem = [toolbarButtonFactory defaultAccessoryButtonItem];
     self.contentView.rightBarButtonItem = [toolbarButtonFactory defaultSendButtonItem];
+    
 
     [self updateSendButtonEnabledState];
 
@@ -119,6 +120,9 @@ static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesIn
 
 - (void)updateSendButtonEnabledState
 {
+    // Not necessary anymore with new design
+    return;
+
     if (!self.enablesSendButtonAutomatically) {
         return;
     }
