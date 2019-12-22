@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name = 'JSQMessagesViewController-Tulleb'
-	s.version = '8.0.2'
+	s.version = '8.0.3'
 	s.summary = 'An elegant messages UI library for iOS. Updated by Tulleb since JSQ stopped supporting it.'
 	s.homepage = 'http://jessesquires.github.io/JSQMessagesViewController'
 	s.license = 'MIT'
